@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <title>anglular JS </title>
+  <meta  charset=UTF-8>
+  <script src="../angular_src/js/angular.js"></script>
+</head>
+<!--1.指令：  ng-app        定义了应用-->
+<!--2.指令：  ng-controller 定义了控制器-->
+
+<!--3.模块：  module        定义angularJS的应用-->
+<!--4.控制器：controller    控制angularJS的应用-->
+
+  <body ng-app="app">
+    <div ng-controller="controller1">
+      名：<input type="text" ng-model="fname"/></br>
+      姓：<input type="text" ng-model="lname"/></br>
+    姓名：{{fname+" "+lname}}
+    </div>
+    <script >
+      var app=angular.module("app",[]);
+      app.controller("controller1",function($scope){
+        $scope.fname="John";
+        $scope.lname="Doe";
+      })
+    </script>
+  </body>
+</html>

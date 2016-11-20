@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html ng-app="">
+<head>
+  <title>anglular JS </title>
+  <meta  charset=UTF-8>
+  <style>
+  </style>
+  <script src="../angular_src/js/angular.js"></script>
+</head>
+  <body>
+  <h4>#### AngularJS过滤器 fillter</h4>
+  <p>1.过滤器：用于转换数据</p>
+  <p>2.过滤器：使用一个管道字符（|）添加到指令、表达式中。</p>
+    <div>
+      <input type="number" ng-model="quantity">
+      <input type="number" ng-model="price">
+
+      <p>总价 = {{ (quantity * price) | currency }}</p>
+    </div>
+  </body>
+</html>

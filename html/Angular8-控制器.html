@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html ng-app="A3">
+<head>
+  <title>anglular JS </title>
+  <meta  charset=UTF-8>
+  <style>
+  </style>
+  <script src="../angular_src/js/angular.js"></script>
+</head>
+  <body>
+  <h4>#### AngularJS控制器 controller</h4>
+  <p>1.控制器：控制angularJS的应用程序；</p>
+  <p>2.控制器:所有控制器均由ng-controller指令定义；</p>
+  <p>3.控制器：是JavaScript对象，由标准的JavaScript对象-构造函数-创建</p>
+  <div ng-controller="C4">
+    姓名：<input type="text" ng-model="name"/>
+    年龄：<input type="text" ng-model="age"/><br/>
+    Say hi: {{say()}}
+  </div>
+  <script >
+    var app=angular.module("A3",[]);
+    app.controller("C4",function($scope){
+      $scope.name="David";
+      $scope.age=25;
+      $scope.say=function(){
+        return "I am "+$scope.name+" ,my age is "+$scope.age;
+      }
+    })
+  </script>
+  </body>
+</html>

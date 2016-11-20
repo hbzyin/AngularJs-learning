@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html ng-app>
+<head>
+  <title>anglular JS </title>
+  <meta  charset=UTF-8>
+  <script src="../angular_src/js/angular.js"></script>
+</head>
+angularJS数据类型
+
+
+  <body>
+  AngularJS 表达式 与 JavaScript 表达式 <br/>
+  ->与 JavaScript 表达式相同，AngularJS 表达式可以包含字母，操作符，变量。 <br/>
+  ->与 JavaScript 表达式不同，AngularJS 表达式可以写在 HTML 中。 <br/>
+  ->与 JavaScript 表达式不同，AngularJS 表达式不支持条件判断，循环及异常。 <br/>
+  ->与 JavaScript 表达式不同，AngularJS 表达式支持过滤器。
+  <br/><br/>
+  1.数字——angular::JavaScript
+    <p>{{5+5}}</p>
+    <div ng-init="q=2;p=15">
+      <p>总价：{{q*p}}</p>
+      <p>总价：<span ng-bind="q*p"></span></p>
+    </div>
+  2.字符串——angular::JavaScript
+    <div ng-init="fname='john';lname='Doe'">
+      <p>姓名：{{fname+" "+lname}}</p>
+      <p>姓名：<span ng-bind="fname+lname"></span></p>
+    </div>
+  3.对象——angular::JavaScript
+    <div ng-init="person={name:'john',age:24}">
+      <p>人物描述：{{person.name+" is "+person.age}}</p>
+      <p>人物描述：<span ng-bind="person.name+' is '+person.age"></span></p>
+    </div>
+  4.数组——angular::JavaScript
+    <div ng-init="arr=[1,2,3,4,5]">
+      <p>第三个值：{{arr[2]}}</p>
+      <p>第三个值：<span ng-bind="arr[2]"></span></p>
+    </div>
+  </body>
+</html>

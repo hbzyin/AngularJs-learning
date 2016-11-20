@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html ng-app="A5">
+<head>
+  <title>anglular JS </title>
+  <meta  charset=UTF-8>
+  <style>
+  </style>
+  <script src="../angular_src/js/angular.js"></script>
+</head>
+  <body>
+  <h4>#### AngularJS服务 Service</h4>
+  <p>1.服务：是一个函数或对象(anglular内建30多个服务)。</p>
+  <p>2.AngularJS使用服务更好的监控应用、处理事件变化</p>
+
+  <h5>a)$location服务：返回当前页面的 URL 地址</h5>
+  <div ng-controller="C5">
+    <p>***当前页面URL地址：{{url}}</p>
+  </div>
+
+  <h5>b)$http服务：向服务器发送请求、应用服务器响应传回的数据。</h5>
+  <div  ng-controller="ajax">
+    ***ajax请求结果：
+    <ul>
+      <li ng-repeat="x in res.sites">{{x|orderBy:x.Country}}</li>
+    </ul>
+  </div>
+
+  <h5>c）$interval 服务：对应JS window.setInterval函数</h5>
+  <div ng-controller="interval">
+    ***interval倒计时：{{time}}
+  </div>
+
+  <h5>d)$timeout服务：对应JS window.setTimeout函数</h5>
+  <div ng-controller="timeout">
+    ***timeout服务：{{hi}}
+  </div>
+
+  <h4>3.自定义服务  app.service</h4>
+  <div ng-controller="self">
+    ****控制器-调用-自定义服务：{{num}} <br/>
+    ****过滤器-调用-自定义服务:
+    <ul><li ng-repeat="x in nums">10进制：{{x}}<===>16进制{{x|fixFormat}}</li></ul>
+  </div>
+
+  <script >
+    var app=angular.module("A5",[]);
+    //1.——$location服务
+    app.controller("C5",function($scope,$location){
+      $scope.url=$location.absUrl();
+    });
+    //2.——$http服务
+    app.controller("ajax",function($scope,$http){
+      $http.get("../db/test.json").then(function(res){
+        $scope.res=res.data;
+      })
+    });
+    //3.——$interval 服务
+    app.controller("interval",function($scope,$interval){
+      $scope.time=10;
+      $interval(function(){
+        if($scope.time>0){
+          $scope.time--;
+        }
+      },1000)
+    });
+    //4.——$timeout 服务
+    app.controller("timeout",function($scope,$timeout){
+      $scope.hi="Hello world!";
+      $timeout(function(){
+        $scope.hi="I have changed ,haha !"
+      },3000)
+    });
+    //5.1.创建自定义服务-数字转换为->16进制
+    app.service("hex",function(){
+      this.Hex=function(x){
+        return x.toString(16);
+      }
+    });
+    //5.2.1.调用自定义服务
+    app.controller("self",function($scope,hex){
+      $scope.num=hex.Hex(255);
+      $scope.nums=[16,32,366,255,123];
+    });
+    //5.2.2服务添加到过滤器
+    app.filter("fixFormat",['hex',function(hex){
+      return function(x){
+        return hex.Hex(x);
+      }
+    }])
+  </script>
+  </body>
+</html>

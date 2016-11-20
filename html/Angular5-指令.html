@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html ng-app="M1">
+<head>
+  <title>anglular JS </title>
+  <meta  charset=UTF-8>
+  <script src="../angular_src/js/angular.js"></script>
+</head>
+  <h3>### angularJS指令</h3>
+  angularJS指令是扩展的HTML-属性-，带有前缀 ng-
+  <br/><br/>
+  <body>
+  1.ng-model：指令->将数据绑定到HTML
+    <div ng-init="q=5;p=3.5">
+      数量：<input type="text" ng-model="p"/>
+      价格：<input type="text" ng-model="q"/>
+      <p>总价：{{q*p}}</p>
+    </div>
+  2.ng-repeat: 指令->用于重复一个HTML元素
+  <div ng-init="names=['John','David','Mary']">
+    <ul>
+      <li ng-repeat="x in names">{{x}}</li>
+    </ul>
+  </div>
+  <div ng-app ng-init="persons=[
+  {name:'John',age:22},
+  {name:'David',age:34},
+  {name:'Brown',age:26}]"></div>
+  <ul>
+    <li ng-repeat="x in persons">
+      {{x.name+" is  "+x.age}}
+    </li>
+  </ul>
+  3.自定义指令及调用方式： app.directive函数
+  <div >
+    1.元素名->调用restrict:"E"
+    <run-directive></run-directive><br/>
+    2.属  性  ->调用restrict:"A"
+    <span run-directive></span><br/>
+    3.类  名  ->调用restrict:"C"
+    <span class="run-directive"></span><br/>
+    4.注  释  ->调用restrict:"M"
+    <!--directive:  run-directive-->
+    <h3>3.2 指令限制调用：restrict:"EACM"</h3>
+    <p>默认调用配置  {restrict:"EA"}</p>
+  </div>
+
+
+  </body>
+<script >
+  var app=angular.module("M1",[]);
+  app.directive("runDirective",function(){
+    return{
+      restrict:"EACM",
+      template:"<b>自定义指令runDirective调用OK</b>"
+    }
+  })
+</script>
+</html>

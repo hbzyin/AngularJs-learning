@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html ng-app="A2">
+<head>
+  <title>anglular JS </title>
+  <meta  charset=UTF-8>
+  <style>
+  </style>
+  <script src="../angular_src/js/angular.js"></script>
+</head>
+  <body>
+  <h4>#### 作用域 scope</h4>
+  <p>1.-->Scope是应用在视图(HTML)和控制器(JavaScript controller)之间的桥梁.</p>
+  <p>2.-->Scope是一个对象，有可用的方法、属性</p>
+  <div ng-controller="C2">
+    <h4 >-》{{name}}</h4>
+  </div>
+  <p>3.-->Scope是一个模型</p>
+  <p>4.-->Scope应用组成：<br/>
+    a）View/视图，即HTML；<br/>
+    b）Model/模型，即当前视图中可用数据；<br/>
+    c）Controller/控制器，即JavaScript函数，可以添加、修改属性</p>
+
+  <p>5.-->根作用域$rootscope</p>
+  <p>ps:根作用域$rootScope作用域整个应用中，是所有controller中scope的桥梁</p>
+  <div ng-controller="C3">
+    <h3>{{lname}}家族成员：</h3>
+    <ul>
+      <li ng-repeat="x in names">{{x}} {{lname}}</li>
+    </ul>
+    <ol><li ng-repeat="x in names">{{x+" "+lname}}</li></ol>
+  </div>
+  <script >
+    var app=angular.module("A2",[]);
+    app.controller("C2",function($scope){
+      $scope.name="这是$scope对象的一个属性，也是一个模型数据。"
+    });
+    app.controller("C3",function($scope,$rootScope){
+      $scope.names=['Emily','Toms','Linus'];
+      $rootScope.lname="Reana";
+    })
+  </script>
+  </body>
+</html>

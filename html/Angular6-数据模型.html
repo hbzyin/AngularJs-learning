@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html ng-app="A1">
+<head>
+  <title>anglular JS </title>
+  <meta  charset=UTF-8>
+  <style>
+    .ng-pristine.ng-valid.ng-touched { border-color: #00f; }
+    .ng-invalid.ng-untouched { border-color: #78FA89; }
+    .ng-pristine.ng-valid { border-color: #f00; }
+  </style>
+  <script src="../angular_src/js/angular.js"></script>
+</head>
+  <body ng-controller="C1">
+    <h3>### 数据模型：ng-modle指令</h3>
+    <p>ng-model指令用于将应用程序数据绑定到HTML控制器（input/select/textarea）的值</p>
+    1.绑定angular创建的变量值
+    <div>
+      名字：<input type="text" ng-model="name"/>
+
+    </div>
+    2.双向数据绑定
+    <br/>输入的名字为：{{name}}</br>
+    3.用户输入验证：ng-show 属性在返回值为true的情况下显示
+    <form name="form1">
+      Email: <input type="email"  name="eaddr" ng-model="e"/>
+      <span ng-show="form1.eaddr.$error.email">不是合法邮箱地址</span>
+    </form>
+    4.应用状态：ng-model 指令为应用数据提供状态值（invalid/dirty/touched/error）
+    <form name="form2">
+      Email: <input type="email"  name="addr" ng-model="e" required/>
+      <h4>状态</h4>
+      {{form2.addr.$valid}}
+      {{form2.addr.$dirty}}
+      {{form2.addr.$touched}}
+      {{form2.addr.$error}}
+    </form>
+    5.基于状态提供css类：默认为--
+    ng-pristine
+    ng-untouched
+    ng-invalid
+    ng-invalid-required
+    <div>
+      ps:ng-model 指令根据表单域的状态添加或移除以下类
+      <div ng-init="inputCss=[
+      {cls:'ng-empty',desc:'空值状态'}, {cls:'ng-not-empty',desc:'非空值'},
+      {cls:'ng-touched',desc:'失去焦点'}, {cls:'ng-untouched',desc:'未失去焦点'},
+      {cls:'ng-valid',desc:'验证通过'},{cls:'ng-invalid',desc:'验证不通过'},
+      {cls:'ng-dirty',desc:'输入值变动'}, {cls:'ng-pristine',desc:'初始状态'},
+      {cls:'ng-pending',desc:'任何未满足$asyncValidators的情况'}
+      ]">
+        <ol><li ng-repeat="x in inputCss">{{x.cls+" : "+x.desc}}</li></ol>
+      </div>
+    </div>
+  <script >
+    var app=angular.module("A1",[]);
+    app.controller("C1",function($scope){
+      $scope.name="John smith";
+    })
+  </script>
+  </body>
+</html>

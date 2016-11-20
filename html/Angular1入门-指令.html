@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <title>anglular JS </title>
+  <meta  charset=UTF-8>
+  <script src="../angular_src/js/angular.js"></script>
+</head>
+  <body>
+    <!-- 1.  ng-app   指令定义一个angularJS应用程序 -->
+    <div ng-app="">
+    <!-- 2.  ng-model : 指令把元素绑定到应用程序 -->
+    <!-- 3.  ng-bind  : 指令把应用程序数据绑定到   HTML视图-->
+    <!-- 4.  {{}}     : 表达式把数据绑定到        HTML视图-->
+      <p>名字：<input type="text" ng-model="name"/></p>
+      <h1>Hello,{{name}}</h1>
+    </div>
+  </body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html ng-app="A6">
+<head>
+  <title>anglular JS </title>
+  <meta  charset=UTF-8>
+  <style>
+  </style>
+  <script src="../angular_src/js/angular.js"></script>
+</head>
+  <body>
+  <h4>#### AngularJS下拉框 select;ng-options</h4>
+  <div ng-controller="C6">
+    <p>1.ng-options 下拉框：选项是一个对象</p>
+    <select ng-model="names" ng-options="x for x in names">
+    </select><br/>
+
+    <p>2.ng-repeat 下拉框：选项是一个字符串</p>
+    <select>
+      <option ng-repeat="x in names">{{x}}</option>
+    </select><br/>
+
+    <select ng-model="sites" >
+      <option ng-repeat="x in sites" value="{{x.url}}">
+        {{x.site}}
+      </option>
+    </select>
+  </div>
+  <script>
+    var app=angular.module("A6",[]);
+    app.controller("C6",function($scope){
+      $scope.names=["Joy","Tom","Hennry"];
+      $scope.sites = [
+        {site : "Google", url : "http://www.google.com"},
+        {site : "Runoob", url : "http://www.runoob.com"},
+        {site : "Taobao", url : "http://www.taobao.com"}
+      ];
+    })
+
+  </script>
+  </body>
+</html>
