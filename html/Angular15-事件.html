@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html ng-app="A9">
+<head>
+  <title>anglular JS </title>
+  <meta  charset=UTF-8>
+  <script src="../angular_src/js/angular.js"></script>
+</head>
+  <body>
+  <h4>#### AngularJS 事件  </h4>
+  ——>AngularJS有自己的事件指令
+  <h5>1.ng-click指令：定义了AngularJS的点击事件</h5>
+  <div>
+    <button ng-click="count=count+1">点啊点，试试。。</button>
+    <p>{{count}}</p>
+  </div>
+
+  <h5>2.ng-hide指令：定义元素的隐藏或显示</h5>
+  <div ng-controller="C9">
+    <button ng-click="toggle()">隐藏/显示</button>
+    <p ng-hide="tag">
+      名：<input type="text" ng-model="fname"/><br/>
+      姓：<input type="text" ng-model="lname"/><br/>
+      <br/>
+      Full name:{{fname+" "+lname}}
+    </p>
+    <p>d </p>
+    <script>
+      var app=angular.module("A9",[]);
+      app.controller("C9",function($scope){
+        $scope.fname="Doe";
+        $scope.lname="Johmn";
+        $scope.toggle=function(){
+          $scope.tag=!$scope.tag;
+        }
+      })
+    </script>
+  </div>
+  </body>
+</html>

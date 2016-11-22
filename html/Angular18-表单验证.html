@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html ng-app="A11">
+<head>
+  <title>anglular JS </title>
+  <meta  charset=UTF-8>
+  <script src="../angular_src/js/angular.js"></script>
+</head>
+  <body >
+  <h4>#### AngularJS 表单验证 form  </h4>
+  <p>客户端的验证不饿能够保证用户输入数据的安全，所以服务器端的数据验证也是必须的</p>
+  <h5>Validation Example</h5>
+  <form ng-controller="C11" name="form_eg" novalidate>
+    <p>用户名：<br/>
+      <input type="text" name="user" ng-model="user" required/>
+      <span style="color:red" ng-show="form_eg.user.$dirty&&form_eg.$invalid">
+        <span ng-show="form_eg.$error.required">用户名是必须的。</span>
+      </span>
+    </p>
+    <p>邮箱：<br/>
+    <input type="text" name="email" ng-model="email" required/>
+      <span style="color:red" ng-show="form_eg.email.$dirty&&form_eg.email.$invalid">
+        <span ng-show="form_eg.email.$error.required">邮箱是必须的。</span>
+        <span ng-show="form_eg.email.$error.email">非法的邮箱。</span>
+      </span>
+    </p>
+    <p>
+      <input type="submit" ng-disabled="form_eg.user.$dirty&&form_eg.user.$invalid||
+      form_eg.email.$dirty&&form_eg.email.$invalid "/>
+    </p>
+  </form>
+  <script >
+    var app=angular.module("A11",[]);
+    app.controller("C11",function($scope){
+      $scope.user="John";
+      $scope.email="john.div@gmail.com";
+    })
+  </script>
+
+
+  </body>
+</html>

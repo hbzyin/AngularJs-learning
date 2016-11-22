@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html ng-app="A8">
+<head>
+  <title>anglular JS </title>
+  <meta  charset=UTF-8>
+  <style>
+    table,th,td{border:1px solid gray;border-collapse:collapse;padding:5px;}
+    table tr:nth-child(odd){background-color:#f1f1f1;}
+    table tr:nth-child(even){backgroud-color:#fffff;}
+  </style>
+  <script src="../angular_src/js/angular.js"></script>
+</head>
+  <body>
+  <h4>#### AngularJS 数据库  </h4>
+  <p>AngularJS 从数据库中获取数据</p>
+  <h5>1.从服务器端获取代码返回值均为json格式</h5>
+  <p>1.1.使用php和MySQL</p>
+  <p>1.2.使用php和MS Access</p>
+  <p>1.3.使用ASP.NET、VB</p>
+  <p>1.4.使用Razor、SQL Lite</p>
+  <div ng-controller="C8">
+    <table>
+      <tr ng-repeat="x in names.names">
+        <td>{{$index+1}}</td>
+        <td>{{x.name}}</td>
+        <td>{{x.country}}</td>
+      </tr>
+    </table>
+  </div>
+  <h5>2.跨域请求</h5>
+  <p>不同域名请求资源，使用以下php代码访问：<br/>
+    header("Access-Control-Allow-Origin:***");
+  </p>
+    <script >
+      var app=angular.module("A8",[]);
+      app.controller("C8",function($scope,$http){
+        $http.get("../db/persons.json")
+          .success(function(res){
+            $scope.names=res;
+          })
+      })
+    </script>
+  </body>
+</html>

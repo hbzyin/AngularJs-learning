@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html ng-app="A10">
+<head>
+  <title>anglular JS </title>
+  <meta  charset=UTF-8>
+  <script src="../angular_src/js/angular.js"></script>
+</head>
+  <body ng-controller="C10">
+  <h4>#### AngularJS 表单 form  </h4>
+  <p>——>AngularJS 表单是输入控件的集合。</p>
+  <p>——>HTML控件：html input元素（input、select、button、textarea）</p>
+  <h5>1.AngularJs表单示例：</h5>
+  姓：<input type="text" ng-model="user.fname"/><br/>
+  名：<input type="text" ng-model="user.lname"/><br/>
+  <p><button ng-click="reset()">Reset</button></p>
+  <p>form={{user}}</p>
+  <p>master={{master}}</p>
+  <script >
+    var app=angular.module("A10",[]);
+    app.controller("C10",function($scope){
+      $scope.master={"fname":"Ammy","lname":"Smith"};
+      $scope.user={"fname":"John","lname":"Div"};
+      $scope.reset=function(){
+        $scope.user=angular.copy($scope.master);
+      };
+    });
+
+  </script>
+
+
+  </body>
+</html>
