@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <title>anglular JS </title>
+  <meta  charset=UTF-8>
+  <link rel="stylesheet" href="..\plugins\bootstrap-3.3.5-dist\css\bootstrap.css"/>
+  <script src="../angular_src/js/angular.js"></script>
+</head>
+  <body >
+  <h4>#### AngularJS--bootstrap  </h4>
+  <h5>--->AngularJS的首选样式表是Twitter Bootstrp,目前最受欢迎的前端框架之一。</h5>
+  <div ng-app="A12" ng-controller="C12">
+    <h5>USERS</h5>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <td>Edit</td>
+          <td>First name</td>
+          <td>Last name</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="user in users">
+          <td>
+            <button class="btn" ng-click="editUser(user.id)">
+              <span class="glyphicon glyphicon-pencil"></span>Edit
+            </button>
+          </td>
+          <td>{{user.fName}}</td>
+          <td>{{user.lName}}</td>
+        </tr>
+      </tbody>
+    </table>
+    <hr/>
+    <button class="btn btn-success" ng-click="editUser('new')">
+      <span class="glyphicon glyphicon-user"> Creat new user</span>
+    </button>
+    <h5 ng-show="edit">Creat new users:</h5>
+    <h5 ng-hide="edit">Creat user:</h5>
+
+    <form class="form-horizontal">
+      <div class="form-group">
+        <label class="col-sm-2 control-label">First name:</label>
+        <div class="col-sm-10">
+          <input type="text" ng-model="fName" ng-disabled="!edit" placeholder="first name"/>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Last name:</label>
+        <div class="col-sm-10">
+          <input type="text" ng-model="lName" ng-disabled="!edit" placeholder="last name"/>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Password:</label>
+        <div class="col-sm-10">
+          <input type="password" ng-model="pwd1" placeholder="password" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Repeat Password:</label>
+        <div class="col-sm-10">
+          <input type="password" ng-model="pwd2" placeholder="Repeat password"/>
+        </div>
+      </div>
+    </form>
+    <hr/>
+    <button class="btn btn-success" ng-disabled="error||incomplete">
+      <span class="glyphicon glyphicon-save"> </span>Save Changes!
+    </button>
+  </div>
+  <script>
+    var app=angular.module("A12",[]);
+    app.controller("C12",function($scope){
+      $scope.fName="";
+      $scope.lName="";
+      $scope.pwd1="";
+      $scope.pwd2="";
+      $scope.users=[
+        {id:1,fName:"hege",lName:"Paen"},
+        {id:2,fName:"Tom",lName:"Clik"},
+        {id:3,fName:"Hason",lName:"Hojo"},
+        {id:4, fName:'Jack', lName:"Jones" },
+        {id:5, fName:'John', lName:"Doe" },
+        {id:6, fName:'Peter',lName:"Pan" }
+      ];
+      $scope.edit=true;;
+      $scope.error=false;
+      $scope.incomplete=false;
+      $scope.editUser=function(id){
+        if(id=="new"){
+          $scope.edit=true;
+          $scope.incomplate=true;
+          $scope.fName="";
+          $scope.lName="";
+        }else{
+          $scope.edit = false;
+          $scope.fName = $scope.users[id-1].fName;
+          $scope.lName = $scope.users[id-1].lName;
+        }
+      };
+
+      $scope.$watch("pwd1",function(){$scope.test()});
+      $scope.$watch("pwd2",function(){$scope.test()});
+      $scope.$watch("fName",function(){$scope.test()});
+      $scope.$watch("lName",function(){$scope.test()});
+
+      $scope.test=function(){
+        if($scope.pwd1!=$scope.pwd2){
+          $scope.error=true;
+        }else{
+          $scope.error=false;
+        }
+        $scope.incomplete=false;
+        if($scope.edit&&(!$scope.fName.length||
+          !$scope.lName.length||
+          !$scope.pwd1.length||
+          !$scope.pwd2.length)){
+          $scope.incomplete=true;
+        }
+      }
+
+    })
+  </script>
+  </body>
+</html>

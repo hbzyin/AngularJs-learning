@@ -1,0 +1,9 @@
+/**下面是一段被包含的angularjs代码段
+  Created by Administrator on 2016/11/30.
+ */
+<table>
+  <tr ng-repeat="x in names" ng-init="names=[{fName:'Tom',lName:'hrenly'},{fNname:'Div',lName:'GGG'}]">
+    <td>{{x.fName}}</td>
+    <td>{{x.lName}}</td>
+  </tr>
+</table>
