@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <title>anglular JS </title>
+  <meta  charset=UTF-8>
+  <script src="../angular_src/js/angular.js"></script>
+  //①引入angular-route.js文件
+  <script src="../angular_src/js/angular-route.js"></script>
+</head>
+  <body ng-app="A20">
+  <h4>#### AngularJS--路由 </h4>
+  <p><h6>->(1.1).AngularJS允许通过不同的URL访问不同内容；</h6></p>
+  <p><h6>->(1.2).AngularJS可以实现多视图单页面Web应用；</h6></p>
+  <p><h6>->(1.2).AngularJS通过（ #+标记 ） 实现单页面跳转。</h6></p>
+    <p>2.1路由应用方法:①引入angular-route.js文件；②注入ngRoute模块；③使用ng-view指令；④定义路由规则</p>
+
+  <ul>
+    <li><a href="#/">首页</a></li>
+    <li><a href="#/page1">第一页</a></li>
+    <li><a href="#/page2">第二页</a></li>
+  </ul>
+  <!--③使用ng-view指令-->
+  <div ng-view></div>
+
+
+  <h5>3.路由设置对象</h5>
+  <p>$routeProvider.when(url,cfgs)</p>
+  实例：<br/>
+  $routeProvider.when(url,{           <br/>
+    template:string,                  <br/>
+    templateUrl:string,               <br/>
+    controller:string/function/array, <br/>
+    controllerAs:string,              <br/>
+    redirectTo:string/function,       <br/>
+    resolve:Object<key ,function>    <br/>
+  })
+
+  <script >
+    //②注入ngRoute模块
+    var app=angular.module("A20",["ngRoute"]);
+    //④定义路由规则
+    app.config(["$routeProvider",function($routeProvider){
+      $routeProvider
+        .when("/",{template:"这是首页"})
+        .when("/page1",{template:"这是第一页"})
+        .when("/page2",{template:"这是第二页"})
+        .otherwise({redirectTo:"/"});
+      }
+    ]);
+  </script>
+  </body>
+</html>
