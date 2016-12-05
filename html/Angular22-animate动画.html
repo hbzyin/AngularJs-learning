@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html ng-app="">
+<head>
+  <title>anglular JS </title>
+  <meta  charset=UTF-8>
+  <script src="../angular_src/js/angular.js"></script>
+  <script src="../angular_src/js/angular-animate.js"></script>
+</head>
+  <body ng-app="ngAnimate">
+  <h4>#### AngularJS--动画animate  </h4>
+  <p>————>1.需引入文件 angular-animate.js</p>
+  <p>————>2.在程序应用中使用： ng-app="ngAnimate"或者直接添加在模型中
+    var app=angular.module("modulename",["ngAnimate"]);
+  </p>
+  <h5>1.动画：通过改变HTML元素产生的动态变化效果，动画的作用是增加页面丰富性，帮助用于理解内容。
+  </h5>
+  隐藏DIV示例: <input type="checkbox" ng-model="check"/>
+  <div ng-hide="check">去去去</div>
+
+  <h5>2.ng动画原理：添加/移除class</h5>
+  <p>2.1 ngAnimate模型并不能使HTML元素产生动画；</p>
+  <p>2.2 ngAnimate会检测事件，事件发生时ngAnimate使用预定义的class来设置HTML元素的动画</p>
+
+  </body>
+</html>

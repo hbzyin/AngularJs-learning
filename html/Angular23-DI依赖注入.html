@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html ng-app="A16">
+<head>
+  <title>anglular JS </title>
+  <meta  charset=UTF-8>
+  <script src="../angular_src/js/angular.js"></script>
+  <script src="../angular_src/js/angular-animate.js"></script>
+</head>
+  <body ng-app="ngAnimate">
+  <h4>#### AngularJS--依赖注入 ：没事你不要来找我，有事我会去找你 </h4>
+  <p>---->软件设计模式的一种：程序设计松耦合、依赖反转、单一职责、客户端自找依赖</p>
+  <p>---->AngularJS作为依赖注入的核心组件：value、factory、service、provider、constant</p>
+  <h5>1.value注入：简单的JS对象，用于向控制器传递值（配置阶段）</h5>
+  <script>
+    var mainApp=angular.module("A16",[]);
+    mainApp.value("defaultValue",5);
+    mainApp.controller("C16",function($scope,CalcService,defaultValue){
+      $scope.num=defaultValue;
+
+    })
+  </script>
+
+  </body>
+</html>
